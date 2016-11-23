@@ -1,8 +1,12 @@
 import sys
 
 class Musician (object):
-    def __init__(self, sounds):
+    
+    
+    def __init__(self, sounds, instrument, name):
         self.sounds = sounds
+        self.instrument = instrument
+        self.name = name
 
     def solo(self, length):
         for i in range(length):
@@ -11,16 +15,13 @@ class Musician (object):
     
 class Bassist(Musician):
     def __init__(self, name):
-        super().__init__(sounds = ["Twang", "Thrumb", "Bling"])
-        self.name = name
-        self.instrument = "Bass"
-  
+        super().__init__(["Twang", "Thrumb", "Bling"], "Bass", name)
         
+
 class Guitarist(Musician):
     def __init__(self, name):
-        super().__init__(sounds = ["Boink", "Bow", "Boom"])
-        self.name = name
-        self.instrument = "Guitar"
+        super().__init__(["Boink", "Bow", "Boom"], "Guitar", name)
+        
 
     def tune(self):
         print("Be with you in a moment")
@@ -28,9 +29,8 @@ class Guitarist(Musician):
         
 class Drummer(Musician):
     def __init__(self, name):
-        super().__init__(sounds = ["Thump", "Snare", "Crash"])
-        self.name = name
-        self.instrument = "Drums"
+        super().__init__(["Thump", "Snare", "Crash"], "Drums", name)
+        
     
     def HitIt(self):
         for i in range(1,5):
@@ -41,9 +41,12 @@ class Drummer(Musician):
         print("Your drummer has died of spontaneous combustion.")
 
 class Band(object):
+
     def __init__(self):
         self.BandMembers = {}
         self.LeadDrums = None
+        
+        
         
     def HireMember(self, musician):
         if musician in self.BandMembers.keys():
@@ -85,4 +88,4 @@ TheShins.HireMember(flea)
 TheShins.HireMember(nigel)
 TheShins.HireMember(moon)
 
-TheShins.JamSession()        
+TheShins.JamSession()       
